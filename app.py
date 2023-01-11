@@ -16,11 +16,12 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/predict',methods=['POST'])
+@app.route('/api/predict',methods=['POST'])
 def predict():
 
     if request.method=='POST':
         result = request.form
+        
 
         index_dict = pickle.load(open('cat','rb'))
         location_cat = pickle.load(open('location_cat','rb'))
@@ -42,12 +43,15 @@ def predict():
         new_vector[2] = result['balcony']
         new_vector[3] = result['size']
 
+
     new = [new_vector]
 
+    print(new)
     prediction = model.predict(new)
-    #print(prediction)
+    print(prediction)
 
-    return render_template('index.html', Predict_score ='Your house estimate price is  ₹ {} lakhs'.format(prediction))
+    # return render_template('index.html', Predict_score ='Your house estimate price is  ₹ {} lakhs'.format(prediction))
+    return jsonify({"prediction": '{}'.format(prediction)[1:-1]})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port= 5000)
