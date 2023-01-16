@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tuto-project
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tuto
+  name: tuto
+  namespace: tuto-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tuto
+  template:
+    metadata:
+      labels:
+        app: tuto
+    spec:
+      containers:
+      - image: allayayahya/tuto:latest
+        name: tuto
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tuto
+  labels:
+    app: tuto
+  namespace: tuto-project
+spec:
+  type: NodePort
+  ports:
+    - port: 5000
+      nodePort: 30000
+  selector:
+    app: tuto

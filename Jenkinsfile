@@ -14,7 +14,7 @@ pipeline {
          }
       }
 
-      stage('Build Image') {
+      stage('Build Docker Image') {
          steps {
            sh '''
            docker build -t yahyaallaya/tuto:latest .
@@ -22,7 +22,7 @@ pipeline {
          }
       }
 
-      stage('Push Image') {
+      stage('Push Docker Image') {
          steps {
            sh '''
            docker tag yahyaallaya/tuto:latest  allayayahya/tuto:latest
@@ -31,6 +31,16 @@ pipeline {
            '''
          }
       }
+
+      stage('Deploy to kubernetes') {
+         steps {
+           sh '''
+           kubectl apply -f kubernetes.yaml
+           '''
+         }
+      }
+
+      
 
    }
 }
