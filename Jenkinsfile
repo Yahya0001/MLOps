@@ -8,8 +8,7 @@ pipeline {
    stages {
       stage('Preparation') {
          steps {
-            cleanWs()
-            git credentialsId: 'GitHub', url: "https://github.com/Yahya0001/MLOps"
+            echo "hi"
          }
       }
       stage('Build') {
