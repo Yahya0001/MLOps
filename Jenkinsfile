@@ -6,12 +6,7 @@ pipeline {
     }
 
    stages {
-      stage('Preparation') {
-         steps {
-            echo "hi"
-         }
-      }
-      stage('Build') {
+      stage('Prepare Envirement') {
          steps {
             sh '''
             pip install -r requirements.txt
@@ -22,7 +17,7 @@ pipeline {
       stage('Build Image') {
          steps {
            sh '''
-           docker build -t yahyaallaya/MLOps:latest .
+           docker build -t yahyaallaya/tuto:latest .
            '''
          }
       }
@@ -30,9 +25,9 @@ pipeline {
       stage('Push Image') {
          steps {
            sh '''
-           docker tag yahyaallaya/MLOps:latest  allayayahya/MLOps:latest
+           docker tag yahyaallaya/tuto:latest  allayayahya/tuto:latest
            docker login -u allayayahya -p 92492@All
-           docker push allayayahya/MLOps:latest
+           docker push allayayahya/tuto:latest
            '''
          }
       }
