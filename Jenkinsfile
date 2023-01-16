@@ -1,9 +1,9 @@
 pipeline {
    agent any
 
-   environment {
-     SERVICE_NAME = "MLOps"
-   }
+   triggers {
+        pollSCM "*/5 * * * *"
+    }
 
    stages {
       stage('Preparation') {
