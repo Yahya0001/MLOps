@@ -35,6 +35,7 @@ pipeline {
       stage('Deploy to kubernetes') {
          steps {
            sh '''
+           minikube start --driver=docker
            kubectl apply -f kubernetes.yaml
            '''
          }
