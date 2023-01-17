@@ -32,14 +32,5 @@ pipeline {
          }
       }
 
-      stage('Deploy to kubernetes') {
-         steps {
-           echo "SUCCESS"
-           sleep(60)
-         }
-      }
-
-      
-
    }
 }
