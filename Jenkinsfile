@@ -6,23 +6,16 @@ pipeline {
     }
 
    stages {
-      stage('Prepare Envirement') {
-         steps {
-            sh '''
-            pip install -r requirements.txt
-            '''
-         }
-      }
 
-      stage('Build Docker Image') {
+      stage('Build Image') {
          steps {
            sh '''
-           docker build -t yahyaallaya/tuto:latest .
+           dock build -t yahyaallaya/tuto:latest .
            '''
          }
       }
 
-      stage('Push Docker Image') {
+      stage('Push Image') {
          steps {
            sh '''
            docker tag yahyaallaya/tuto:latest  allayayahya/tuto:latest
