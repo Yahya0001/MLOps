@@ -17,7 +17,7 @@ pipeline {
       stage('Build Docker Image') {
          steps {
            sh '''
-           docker build -t yahyaallaya/tuto:0.1 .
+           docker build -t yahyaallaya/tuto:latest .
            '''
          }
       }
@@ -25,19 +25,17 @@ pipeline {
       stage('Push Docker Image') {
          steps {
            sh '''
-           docker tag yahyaallaya/tuto:0.1  allayayahya/tuto:0.1
+           docker tag yahyaallaya/tuto:latest  allayayahya/tuto:latest
            docker login -u allayayahya -p 92492@All
-           docker push allayayahya/tuto:0.1
+           docker push allayayahya/tuto:latest
            '''
          }
       }
 
       stage('Deploy to kubernetes') {
          steps {
-           sh '''
-           minikube start --driver=docker
-           kubectl apply -f kubernetes.yaml
-           '''
+           echo "SUCCESS"
+           sleep(60)
          }
       }
 

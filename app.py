@@ -43,9 +43,6 @@ def predict():
         new_vector[2] = result['balcony']
         new_vector[3] = result['size']
 
-        a= "yahya"
-        print(a)
-
     new = [new_vector]
 
     print(new)
