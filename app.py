@@ -1,10 +1,7 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 import pickle
 
-#procfile.txt 
-#web: gunicorn app:app
-#first file that we have to run first : flask server name
 app = Flask(__name__)
 pkl_file = open('model.pkl','rb')
 model = pickle.load(open('model.pkl', 'rb'))
@@ -13,7 +10,8 @@ index_dict = pickle.load(pkl_file)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return jsonify({"Project is working..."})
+
 
 
 @app.route('/api/predict',methods=['POST'])
@@ -49,8 +47,13 @@ def predict():
     prediction = model.predict(new)
     print(prediction)
 
-    # return render_template('index.html', Predict_score ='Your house estimate price is  ₹ {} lakhs'.format(prediction))
     return jsonify({"prediction": '{}'.format(prediction)[1:-1]})
+
+@app.route('/api/test')
+def test():
+    return jsonify({"Project is working just fine"})
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, port= 5000)

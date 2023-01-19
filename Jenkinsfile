@@ -10,7 +10,7 @@ pipeline {
       stage('Build Image') {
          steps {
            sh '''
-           docker build -t yahyaallaya/tuto:1.1 .
+           docker build -t yahyaallaya/tuto:1.2 .
            '''
          }
       }
@@ -18,9 +18,9 @@ pipeline {
       stage('Push Image') {
          steps {
            sh '''
-           docker tag yahyaallaya/tuto:1.1  allayayahya/tuto:1.1
+           docker tag yahyaallaya/tuto:1.2  allayayahya/tuto:1.2
            docker login -u allayayahya -p 92492@All
-           docker push allayayahya/tuto:1.1
+           docker push allayayahya/tuto:1.2
            '''
          }
       }
