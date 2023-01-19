@@ -53,6 +53,9 @@ def predict():
 def test():
     return jsonify({"Project is working just fine"})
 
+@app.route('/api/test2')
+def test2():
+    return jsonify({"Project is working just fine"})
 
 
 if __name__ == "__main__":
