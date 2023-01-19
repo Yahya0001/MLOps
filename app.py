@@ -58,8 +58,8 @@ def test2():
     return jsonify({"Project is working just fine"})
 
 
-@app.route('/api/test21')
-def test21():
+@app.route('/api1')
+def test25():
     return jsonify({"Project is working just fine"})
 
 
