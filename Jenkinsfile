@@ -19,7 +19,7 @@ pipeline {
          steps {
            sh '''
            docker tag yahyaallaya/tuto:1.2  allayayahya/tuto:1.2
-           docker login -u allayayahya -p 92492@All
+           docker login -u allayayahya -p *********
            docker push allayayahya/tuto:1.2
            '''
          }
